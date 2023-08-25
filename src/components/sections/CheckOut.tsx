@@ -28,14 +28,12 @@ const StripeCheckOutButton = (props: IProps) => {
 
   return (
     <div className="py-5">
-      <Link href={"api/stripe-session"}>
         <button
           className="bg-[#212121] text-white py-3 px-3 rounded-md"
           onClick={handleCheckout}
         >
           Process to Checkout
         </button>
-      </Link>
     </div>
   );
 };

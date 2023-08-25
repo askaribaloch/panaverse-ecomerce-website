@@ -31,6 +31,12 @@ export const ProductDetails: FC<{ item: any }> = ({ item }) => {
               {item.category.name}
             </span>
           </p>
+          <p className="font-bold text-lg mt-4">
+            Price{' '}
+            <span className="text-base font-normal uppercase">
+              {item.price}
+            </span>
+          </p>
           <div className="mt-6">
             <h3 className="text-xs md:text-sm font-semibold">Select Size</h3>
             <div className="flex gap-x-3 mt-2">

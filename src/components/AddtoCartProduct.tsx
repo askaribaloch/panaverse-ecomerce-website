@@ -14,7 +14,7 @@ type IProps = {
   userId: string;
 };
 
-const AddtoCartProduct = (props: IProps) => {
+const AddtoCartProduct = (props: IProps) => {3
   const [qty, setQty] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
