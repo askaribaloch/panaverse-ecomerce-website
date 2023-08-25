@@ -1,37 +1,27 @@
-import { Image as IImage } from "sanity";
-//import { Hero } from "@/views/Hero";
-import { ProductCard } from "@/components/ProductCard";
-import { client } from "../../../../sanity/lib/client";
-//import ProductList from "@/views/ProductList";
+import { client } from '../../../../sanity/lib/client';
+import { IProduct } from '@/utils/types';
+import { ProductDetails } from '@/components/ProductDetails';
 
-export const getProductData = async (id: string) => {
+const getProductData = async (id: string) => {
   const res = await client.fetch(
     `*[_type=="product" && _id == $id]{
-    _id,
+      _id,
       title,
       image,
+      tagline -> {
+        name
+      },
       price,
       category -> {
         name
       }
-  }`,
+    }`,
     { id }
   );
   return res;
 };
 
-interface IProduct {
-  _id: string;
-  title: string;
-  price: number;
-  description: string;
-  image: IImage;
-  category: {
-    name: string;
-  };
-}
-
-export default async function ProductDetails({
+export default  async function ProductSummary({
   params,
 }: {
   params: { id: string };
@@ -39,15 +29,19 @@ export default async function ProductDetails({
   const data: IProduct[] = await getProductData(params.id);
 
   return (
-    <div className="grid justify-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       {data.length !== 0 ? (
         data.map((item) => (
-          <div key={item._id}>
-            <ProductCard item={item} />
+          <div
+            key={item._id}
+          >
+            <ProductDetails item={item} />
           </div>
         ))
       ) : (
-        <div>No Product Available for this Category</div>
+        <div className="text-center text-gray-500">
+          No Product Available for this Category
+        </div>
       )}
     </div>
   );

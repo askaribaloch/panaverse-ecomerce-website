@@ -10,7 +10,7 @@ import featured4 from "../assets/Featured4.png";
 
 export const Hero = () => {
   return (
-    <section className="flex flex-col lg:flex-row justify-center items-center content-center">
+    <section className="flex flex-col lg:flex-row gap-y-10 justify-center items-center content-center">
       {/* content */}
       <div className="flex-1">
         <Badge className="py-3 px-6 rounded-lg bg-blue-100 text-blue-700">
@@ -68,13 +68,18 @@ export const Hero = () => {
       </div>
 
       {/* image */}
-      <div className="Image w-[642px] h-[604px] relative">
-        <div className="Ellipse w-[590px] h-[591px] left-0 top-[13px] absolute bg-rose-100 rounded-full" />
-        <Image
-          className="Image w-[627.02px] h-[604px] left-[14.98px] top-0 absolute"
-          src={header} alt=""
-        />
-      </div>
+      <div className="lg:block hidden w-[50%]">
+          <div className="relative">
+            <div className=" absolute w-[430px] h-[430px] bg-[#ffece3] -z-[10] rounded-full left-5 top-10"></div>
+            <Image
+              src={header}
+              alt="Hero photo"
+              width={600}
+              height={600}
+              className=""
+            />
+          </div>
+        </div>
     </section>
   );
 };

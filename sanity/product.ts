@@ -36,5 +36,15 @@ export const product = defineType({
         },
       ],
     }),
+    defineField({
+      name: "tagline",
+      title: "Tag Line",
+      type: "reference",
+      to: [
+        {
+          type: "tagline",
+        },
+      ],
+    }),
   ],
 });

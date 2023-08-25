@@ -1,23 +1,29 @@
-import React from "react";
+import Wrapper from "@/app/shared/Wrapper";
 
-const EmailSubscription = () => {
+const Newsletter = () => {
   return (
-    <div className="EmailSubscription w-[706px] h-[158px] left-[367px] absolute">
-    <div className="Background left-0 top-[4px] absolute text-slate-50 text-[120px] font-extrabold">Newsletter</div>
-    <div className="Title w-[578px] left-[64px] top-0 absolute text-center text-neutral-800 text-[32px] font-bold tracking-wider">Subscribe Our Newsletter</div>
-    <div className="Details w-[578px] left-[64px] top-[52px] absolute text-center text-neutral-800 text-[14px] font-light leading-relaxed">Get the latest information and promo offers directly</div>
-    <div className="EmailForm w-[458px] h-10 left-[124px] top-[118px] absolute">
-      <div className="InputForm w-80 h-10 left-0 top-0 absolute">
-        <div className="Shape w-80 h-10 left-0 top-0 absolute bg-zinc-100 bg-opacity-20 border border-zinc-100" />
-        <div className="Text left-[20px] top-[12px] absolute text-stone-500 text-[13px] font-normal">Input email address</div>
+    <Wrapper>
+      <div className="flex w-full justify-center items-center">
+        <div className="flex flex-col justify-between items-center w-full gap-y-5 my-20 relative">
+          <h3>Subscribe Our Newsletter</h3>
+          <p>Get the latest information and promo offers directly</p>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-3 w-full">
+            <input
+              type="email"
+              placeholder="Input email address"
+              className="px-2 border border-black text-sm py-2 lg:w-[30%] sm:w-[40%] w-full"
+            />
+            <button className="text-white  bg-[#212121] px-8 py-2">
+              Get Started
+            </button>
+          </div>
+          <div className="absolute bs:text-center w-full font-bold text-[4rem] bs:text-[4.8rem] sm:[6.2rem] lg:text-[7.5rem]  tracking-widest -z-[10] text-[#212121]/5 overflow-hidden">
+            Newsletter
+          </div>
+        </div>
       </div>
-      <div className="Button w-[130px] h-10 left-[328px] top-0 absolute">
-        <div className="Shape w-[130px] h-10 left-0 top-0 absolute bg-neutral-800 shadow" />
-        <div className="Text left-[27px] top-[12px] absolute text-center text-white text-[13px] font-semibold">Get Started</div>
-      </div>
-    </div>
-  </div>
+    </Wrapper>
   );
 };
 
-export default EmailSubscription;
+export default Newsletter;

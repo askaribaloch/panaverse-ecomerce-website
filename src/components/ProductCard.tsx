@@ -1,39 +1,33 @@
-"use client";
-import Image from "next/image";
-import { urlForImage } from "../../sanity/lib/image";
-import { FC } from "react";
-import Link from "next/link";
+import Image from 'next/image';
+import { urlForImage } from '../../sanity/lib/image';
+import { FC } from 'react';
+import Link from 'next/link';
 
 export const ProductCard: FC<{ item: any }> = ({ item }) => {
-  /* const handleAddToCart = async () => {
-        const res = await fetch("/api/cart", {
-            method: "POST",
-            body:JSON.stringify({
-                product_id:item._id
-            })
-        })
-    } */
   return (
-    <div>
-      <Link href={`/products/${item._id}`}>
-      <div>
-      <Image
-        width={380}
-        height={400}
-        src={urlForImage(item.image).url()}
-        alt="product"
-      />
-      <h3 className="font-bold text-lg mt-3">{item.title}</h3>
-      <p className="font-bold text-lg">${item.price}</p>
-      <p className="font-bold text-lg">
-        Category {' '}
-        <span className="text-base font-normal uppercase">{item.category.name}</span>
-      </p>
-    </div>    
-      </Link>
-      {/* <button onClick={handleAddToCart} className="border py-2 px-6 rounded bg-blue-600 text-white">Add to Cart</button> */}
-    </div>
+    <Link href={`/products/${item._id}`}>
+      <div className="bg-white rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out cursor-pointer">
+        <div className="relative">
+          <Image
+            src={urlForImage(item.image).url()}
+            alt="product"
+            layout="responsive"
+            width={380}
+            height={400}
+            className="rounded-t-lg"
+          />
+        </div>
+        <div className="p-4">
+          <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+          <p className="text-gray-700">${item.price}</p>
+          <p className="text-sm text-gray-600 mt-1">
+            Category{' '}
+            <span className="text-xs font-medium uppercase">
+              {item.category.name}
+            </span>
+          </p>
+        </div>
+      </div>
+    </Link>
   );
 };
-
-/* src={urlForImage(item.image).url() */

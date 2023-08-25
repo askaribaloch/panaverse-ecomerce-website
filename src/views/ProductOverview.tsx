@@ -1,73 +1,78 @@
-import Image from "next/image";
-import img from "../assets/feature.png";
+import Image from 'next/image';
+import img from '../assets/feature.png';
+import Link from 'next/link';
+import Wrapper from '@/app/shared/Wrapper';
 
 const FeaturesBanner = () => {
   return (
-    <div className="w-[1305px] h-[697px] relative">
-      <div className="w-[787px] h-[600px] left-0 top-[97px] absolute bg-slate-50"></div>
-      <div className="w-[511px] left-[128px] top-[247px] absolute opacity-5 text-neutral-800 text-[100px] font-extrabold leading-10">
-        Different from others
+    <Wrapper>
+      <div className="grid grid-cols-2 gap-5">
+        <div className="col-span-2 col-start-1 h-full w-full  xl:col-start-2">
+          <h3 className="text-[2.5rem] sm:text-[2.75rem] tracking-[0.03em] leading-[3rem]">
+            Unique and Authentic Vintage Designer Jewellery
+          </h3>
+        </div>
+        <div className="col-span-2 grid grid-cols-2 gap-5">
+          <div className="relative col-span-2 h-full w-full  xl:col-span-1">
+            <div className="grid grid-cols-2 gap-10 mr-20">
+              <div className=" ">
+                <h4>Using Good Quality Materials</h4>
+                <p className="mt-5">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div className=" ">
+                <h4>100% Handmade Products</h4>
+                <p className="mt-5">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div className=" ">
+                <h4>Lorem, ipsum dolor.</h4>
+                <p className="mt-5">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+              <div className=" ">
+                <h4>Lorem, ipsum dolor.</h4>
+                <p className="mt-5">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                </p>
+              </div>
+            </div>
+            <div className="absolute inset-0 overflow-hidden text-[5rem] sm:text-8xl  font-bold tracking-widest text-gray-200/70 -z-[10]">
+              Different From Others
+            </div>
+          </div>
+          <div className="col-span-2   xl:col-span-1">
+            <div className="flex flex-col h-full w-full items-center justify-center gap-5 sm:flex-row">
+              <div className="basis-1/2  w-full flex justify-center">
+                <Image
+                  src={img}
+                  alt=""
+                  width={250}
+                  height={250}
+                  className=""
+                />
+              </div>
+              <div className="flex flex-col justify-center items-center gap-5  basis-1/2 ">
+                <p className="tracking-wider leading-6">
+                  This piece is ethically crafted in our small family-owned
+                  workshop in Peru with unmatched attention to detail and care.
+                  The Natural color is the actual natural color of the fiber,
+                  undyed and 100% traceable.
+                </p>
+                <Link href={"/products"}>
+                  <button className="w-28 bg-black p-2 text-sm text-white">
+                    See All Products
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <Image
-        className="left-[648px] top-[197px] absolute origin-top-left"
-        width={325}
-        height={400}
-        src={img}
-        alt="products"
-      />
-
-      <div className="w-[564px] left-[741px] top-0 absolute text-neutral-800 text-[44px] font-bold tracking-widest">
-        Unique and Authentic Vintage Designer Jewellery
-      </div>
-      <div className="w-[282px] h-[252px] left-[1023px] top-[271px] absolute">
-        <div className="w-[282px] left-0 top-0 absolute text-justify text-neutral-800 text-[14px] font-light leading-relaxed">
-          This piece is ethically crafted in our small family-owned workshop in
-          Peru with unmatched attention to detail and care. The Natural color is
-          the actual natural color of the fiber, undyed and 100% traceable.
-        </div>
-        <div className="w-[186px] h-[46px] left-0 top-[206px] absolute">
-          <div className="w-[186px] h-[46px] left-0 top-0 absolute bg-neutral-800 shadow"></div>
-          <div className="left-[34px] top-[14px] absolute text-center text-white text-[14px] font-semibold">
-            See All Products
-          </div>
-        </div>
-      </div>
-      <div className="w-[392px] h-[268px] left-[135px] top-[263px] absolute">
-        <div className="w-[170px] h-[114px] left-0 top-0 absolute">
-          <div className="w-[170px] left-0 top-[48px] absolute text-neutral-800 text-[14px] font-light leading-snug tracking-wider">
-            Lorem ipsum dolor sit amt, consectetur adipiscing elit.
-          </div>
-          <div className="w-[170px] left-0 top-0 absolute text-neutral-800 text-[16px] font-semibold tracking-wide">
-            Using Good Quality Materials
-          </div>
-        </div>
-        <div className="w-[170px] h-[114px] left-[222px] top-[154px] absolute">
-          <div className="w-[170px] left-0 top-[48px] absolute text-neutral-800 text-[14px] font-light leading-snug tracking-wider">
-            Lorem ipsum dolor sit amt, consectetur adipiscing elit.
-          </div>
-          <div className="w-[170px] left-0 top-0 absolute text-neutral-800 text-[16px] font-semibold tracking-wide">
-            Discount for Bulk Orders
-          </div>
-        </div>
-        <div className="w-[170px] h-[114px] left-[222px] top-0 absolute">
-          <div className="w-[170px] left-0 top-[48px] absolute text-neutral-800 text-[14px] font-light leading-snug tracking-wider">
-            Lorem ipsum dolor sit amt, consectetur adipiscing elit.
-          </div>
-          <div className="w-[170px] left-0 top-0 absolute text-neutral-800 text-[16px] font-semibold tracking-wide">
-            100% Handmade Products
-          </div>
-        </div>
-        <div className="w-[170px] h-[114px] left-0 top-[154px] absolute">
-          <div className="w-[170px] left-0 top-[48px] absolute text-neutral-800 text-[14px] font-light leading-snug tracking-wider">
-            Lorem ipsum dolor sit amt, consectetur adipiscing elit.
-          </div>
-          <div className="w-[170px] left-0 top-0 absolute text-neutral-800 text-[16px] font-semibold tracking-wide">
-            Modern Fashion Design
-          </div>
-        </div>
-      </div>
-    </div>
+    </Wrapper>
   );
 };
 

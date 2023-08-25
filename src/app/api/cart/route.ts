@@ -1,37 +1,62 @@
-import { NextRequest, NextResponse } from "next/server"
-import { cartTable, db } from "../../../../sanity/lib/drizzle"
-import {v4 as uuid} from "uuid";
-import { cookies } from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
+import { auth } from "@clerk/nextjs";
+import { and, eq } from "drizzle-orm";
+import { addToCart, cartTable, db } from "../../../../sanity/lib/drizzle";
 
-export const GET = async (reuest:NextRequest) => {
-    try {
-        const res = await db.select().from(cartTable)
-        return NextResponse.json({res})
-    } catch (error) {
-        console.log(error)
-        return NextResponse.json({message:"something went wrong"})
-        
-    }    
-}
+export const POST = async (request: NextRequest) => {
+  const { userId } = auth();
 
-export const POST = async (request:NextRequest) => {
-    const uid = uuid()
-    const req = await request.json()
-    const setCookies = cookies()
-    const user_id = cookies().get("user_id")
-    if(!user_id){
-        setCookies.set("user_id", uid)
+  const req: addToCart = await request.json();
+
+  try {
+    if (req) {
+      const res = await db
+        .insert(cartTable)
+        .values({
+          user_id: userId as string,
+          product_id: req.product_id,
+          quantity: req.quantity,
+          image: req.image,
+          price: req.price,
+          product_name: req.product_name,
+          subcat: req.subcat,
+          total_price: req.price * req.quantity,
+        })
+        .returning();
+      return NextResponse.json({ res });
+    } else {
+      throw new Error("Failed to insert Data");
     }
-    try {
-        const res = await db.insert(cartTable).values({
-            product_id: req.product_id,
-            quantity:1,
-            user_id: cookies().get("user_id")?.value as string
-        }).returning();
-        console.log(res)
-        return NextResponse.json({res})
-    } catch (error) {
-        console.log(error)
-        return NextResponse.json({message:"something went wrong"})        
-    }    
-}
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({
+      Message: "Something went wrong",
+    });
+  }
+};
+
+export const PUT = async (request: NextRequest) => {
+  const { userId } = auth();
+
+  const req: addToCart = await request.json();
+
+  try {
+    if (req) {
+      const res = await db
+        .update(cartTable)
+        .set({
+          quantity: req.quantity,
+          total_price: req.price,
+        })
+        .where(and(eq(cartTable.user_id, userId as string), eq(cartTable.product_id, req.product_id))).returning();
+      return NextResponse.json({ res });
+    } else {
+      throw new Error("Failed to update Data");
+    }
+  } catch (error) {
+    console.log(error);
+    return NextResponse.json({
+      Message: "Something went wrong",
+    });
+  }
+};
