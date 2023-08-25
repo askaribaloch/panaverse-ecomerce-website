@@ -1,4 +1,5 @@
 import { authMiddleware } from "@clerk/nextjs";
+//check repo code
 
 export default authMiddleware({
   publicRoutes: ["/", "/male", "/kids", "/api/cart/:path*", "/api/webhooks/:path*", "/studio/:path*"],
