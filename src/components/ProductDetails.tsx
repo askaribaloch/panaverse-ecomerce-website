@@ -8,6 +8,7 @@ const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
 
 export const ProductDetails: FC<{ item: any }> = ({ item }) => {
   const { userId: user_id } = auth();
+  console.log(user_id)
 
   return (
     <div className="bg-white rounded-lg shadow-lg p-6">

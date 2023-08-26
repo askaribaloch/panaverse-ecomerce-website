@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useAppSelector } from "@/redux/store";
 import Menu from "@/app/shared/Manu";
 import { UserButton } from "@clerk/nextjs";
+import { LogoText } from "../ui/logoText";
 
 export const Header = ({ userId }: { userId: string }) => {
   const totalItems = useAppSelector((state) => state.cart.totalQuantity);
@@ -26,7 +27,7 @@ export const Header = ({ userId }: { userId: string }) => {
       <div className="flex justify-between items-center p-4 lg:px-12 max-w-screen-xl mx-auto">
         <div>
           <Link href={"/"}>
-            <Image src="/Logo.webp" alt="Logo" width={150} height={150} />
+            <LogoText />
           </Link>
         </div>
         <div className="hidden lg:block">
@@ -71,7 +72,7 @@ export const Header = ({ userId }: { userId: string }) => {
         <div className="flex justify-between items-center mb-4">
           <div>
             <Link href={"/"}>
-              <Image src="/Logo.webp" alt="Logo" width={150} height={150} />
+              <LogoText />
             </Link>
           </div>
           <div>

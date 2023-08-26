@@ -20,6 +20,7 @@ const StripeCheckOutButton = (props: IProps) => {
     });
 
     const data = await response.json();
+    console.log(data)
 
     if (data.session) {
       stripe?.redirectToCheckout({ sessionId: data.session.id });

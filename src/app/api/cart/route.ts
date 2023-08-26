@@ -23,6 +23,7 @@ export const POST = async (request: NextRequest) => {
           total_price: req.price * req.quantity,
         })
         .returning();
+        console.log("db_res", res)
       return NextResponse.json({ res });
     } else {
       throw new Error("Failed to insert Data");
